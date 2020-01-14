@@ -10,6 +10,7 @@ namespace WebEshopTests
     {
         private string name;
         private string discount_amount;
+        private string valid_date;
 
         public CouponData(string name, string discount_amount)
         {
@@ -41,6 +42,19 @@ namespace WebEshopTests
                 discount_amount = value;
             }
         }
-        
+
+        public string Valid_date
+        {
+            get
+            {
+                return valid_date;
+            }
+            set
+            {
+                valid_date = value;
+            }
+        }
+
+
     }
 }

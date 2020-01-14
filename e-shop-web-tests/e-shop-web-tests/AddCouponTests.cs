@@ -75,13 +75,13 @@ namespace WebEshopTests
            
             driver.FindElement(By.Id("name")).Click();
             driver.FindElement(By.Id("name")).Clear();
-            driver.FindElement(By.Id("name")).SendKeys(name);
+            driver.FindElement(By.Id("name")).SendKeys(coupon.Name);
             driver.FindElement(By.Id("discount_amount")).Click();
             driver.FindElement(By.Id("discount_amount")).Clear();
-            driver.FindElement(By.Id("discount_amount")).SendKeys(discount_amount);
+            driver.FindElement(By.Id("discount_amount")).SendKeys(coupon.Discount_amount);
             driver.FindElement(By.Name("valid_date")).Click();
             driver.FindElement(By.Name("valid_date")).Clear();
-            driver.FindElement(By.Name("valid_date")).SendKeys(valid_date);
+            driver.FindElement(By.Name("valid_date")).SendKeys(coupon.Valid_date);
             driver.FindElement(By.XPath("//form/div[5]/div")).Click();
             driver.FindElement(By.Id("number_coupons")).Click();
             driver.FindElement(By.Id("number_coupons")).Clear();
