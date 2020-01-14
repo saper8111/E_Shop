@@ -48,43 +48,75 @@ namespace WebEshopTests
         [Test]
         public void CouponCreationTest()
         {
-            // Open home page
-            driver.Navigate().GoToUrl(baseURL);
-            // Login
-            driver.FindElement(By.XPath("(//input[@name='email'])[4]")).Click();
-            driver.FindElement(By.XPath("(//input[@name='email'])[4]")).Clear();
-            driver.FindElement(By.XPath("(//input[@name='email'])[4]")).SendKeys("demo@open-eshop.com");
-            driver.FindElement(By.XPath("(//input[@name='password'])[2]")).Click();
-            driver.FindElement(By.XPath("(//input[@name='password'])[2]")).Clear();
-            driver.FindElement(By.XPath("(//input[@name='password'])[2]")).SendKeys("demo");
-            driver.FindElement(By.XPath("(//button[@type='submit'])[5]")).Click();
-            // Go to coupon page
-            driver.FindElement(By.XPath("//a/span[2]")).Click();
-            driver.FindElement(By.XPath("//tr[4]/td/li/a/span")).Click();
-            // Init new coupon creation
-            driver.FindElement(By.XPath("//div[@id='content']/a")).Click();
-            // Fill coupon form
-            driver.FindElement(By.Id("name")).Click();
-            driver.FindElement(By.Id("name")).Clear();
-            driver.FindElement(By.Id("name")).SendKeys("test123");
-            driver.FindElement(By.Id("discount_amount")).Click();
-            driver.FindElement(By.Id("discount_amount")).Clear();
-            driver.FindElement(By.Id("discount_amount")).SendKeys("155");
-            driver.FindElement(By.Name("valid_date")).Click();
-            driver.FindElement(By.Name("valid_date")).Clear();
-            driver.FindElement(By.Name("valid_date")).SendKeys("12122020");
-            driver.FindElement(By.XPath("//form/div[5]/div")).Click();
-            driver.FindElement(By.Id("number_coupons")).Click();
-            driver.FindElement(By.Id("number_coupons")).Clear();
-            driver.FindElement(By.Id("number_coupons")).SendKeys("700");
-            // Submin coupon creation
-            driver.FindElement(By.Name("submit")).Click();
-            // Return to coupons page
+            OpenHomePage();
+            Login(new AccountData("demo@open-eshop.com", "demo"));
+            GoToCouponsPage();
+            InitCouponCreation();
+            FillCouponForm(new CouponData("test123", "155", "12122020", "700"));
+            SubmitCouponCreation();
+            Logout();
+        }
+
+        private void Logout()
+        {
+            // Logout
             driver.FindElement(By.XPath("//a[contains(@href, '#')]")).Click();
             driver.FindElement(By.LinkText("Logout")).Click();
         }
 
-       
+        private void SubmitCouponCreation()
+        {
+            // Submin coupon creation
+            driver.FindElement(By.Name("submit")).Click();
+        }
+
+        private void FillCouponForm(string name, string discount_amount, string valid_date, string number_coupons)
+        {
+           
+            driver.FindElement(By.Id("name")).Click();
+            driver.FindElement(By.Id("name")).Clear();
+            driver.FindElement(By.Id("name")).SendKeys(name);
+            driver.FindElement(By.Id("discount_amount")).Click();
+            driver.FindElement(By.Id("discount_amount")).Clear();
+            driver.FindElement(By.Id("discount_amount")).SendKeys(discount_amount);
+            driver.FindElement(By.Name("valid_date")).Click();
+            driver.FindElement(By.Name("valid_date")).Clear();
+            driver.FindElement(By.Name("valid_date")).SendKeys(valid_date);
+            driver.FindElement(By.XPath("//form/div[5]/div")).Click();
+            driver.FindElement(By.Id("number_coupons")).Click();
+            driver.FindElement(By.Id("number_coupons")).Clear();
+            driver.FindElement(By.Id("number_coupons")).SendKeys(number_coupons);
+        }
+
+        private void InitCouponCreation()
+        {
+            
+            driver.FindElement(By.XPath("//div[@id='content']/a")).Click();
+        }
+
+        private void GoToCouponsPage()
+        {
+            // Go to coupon page
+            driver.FindElement(By.XPath("//a/span[2]")).Click();
+            driver.FindElement(By.XPath("//tr[4]/td/li/a/span")).Click();
+        }
+
+        private void Login(AccountData account)
+        {
+            driver.FindElement(By.XPath("(//input[@name='email'])[4]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='email'])[4]")).Clear();
+            driver.FindElement(By.XPath("(//input[@name='email'])[4]")).SendKeys(account.Email);
+            driver.FindElement(By.XPath("(//input[@name='password'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='password'])[2]")).Clear();
+            driver.FindElement(By.XPath("(//input[@name='password'])[2]")).SendKeys(account.Password);
+            driver.FindElement(By.XPath("(//button[@type='submit'])[5]")).Click();
+        }
+
+        private void OpenHomePage()
+        {
+            driver.Navigate().GoToUrl(baseURL);
+        }
+
 
         private bool IsElementPresent(By by)
         {

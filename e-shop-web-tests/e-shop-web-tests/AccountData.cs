@@ -9,24 +9,24 @@ namespace WebEshopTests
     class AccountData
     {
 
-        private string username;
+        private string email;
         private string password;
 
-        public AccountData(string username, string password)
+        public AccountData(string email, string password)
         {
-            this.username = username;
+            this.email = email;
             this.password = password;
         }
 
-        public string Username
+        public string Email
         {
             get
             {
-                return username;
+                return email;
             }
             set
             {
-                username = value;
+                email = value;
             }
         }
 
