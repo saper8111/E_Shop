@@ -18,13 +18,13 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace Gurock.TestRail
+namespace e_shop_web_tests
 {
     public class APIClient
     {
-        private string m_user;
-        private string m_password;
-        private string m_url;
+        public string m_user;
+        public string m_password;
+        public string m_url;
 
         public APIClient(string base_url)
         {

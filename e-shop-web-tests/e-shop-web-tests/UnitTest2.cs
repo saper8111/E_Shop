@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
-using OpenQA.Selenium.Support.UI;
 
 namespace e_shop_web_tests
 {
@@ -22,7 +20,8 @@ namespace e_shop_web_tests
         private IWebDriver driver;
         private StringBuilder verificationErrors;
         private string baseURL;
-      
+
+        public static APIClient APIClient { get; private set; }
 
         [SetUp]
         public void SetupTest()
@@ -47,7 +46,7 @@ namespace e_shop_web_tests
         }
 
         [Test]
-        public void TheLoginTest()
+        public void TheUntitledTestCaseTest()
         {
             driver.Navigate().GoToUrl(baseURL);
             driver.FindElement(By.XPath("(//input[@name='email'])[4]")).Click();
@@ -56,16 +55,46 @@ namespace e_shop_web_tests
             driver.FindElement(By.XPath("(//input[@name='password'])[2]")).Click();
             driver.FindElement(By.XPath("(//input[@name='password'])[2]")).Clear();
             driver.FindElement(By.XPath("(//input[@name='password'])[2]")).SendKeys("demo");
-            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Register'])[5]/following::button[1]")).Click();
-            try
-            {
-                Assert.IsTrue(IsElementPresent(By.XPath("//div[2]/a/i")));
-            }
-            catch (AssertionException e)
-            {
-                verificationErrors.Append(e.Message);
-            }
+            driver.FindElement(By.XPath("(//button[@type='submit'])[5]")).Click();
+            driver.FindElement(By.XPath("//a/span[2]")).Click();
+            driver.FindElement(By.XPath("//tr[4]/td/li/a/span")).Click();
+            driver.FindElement(By.XPath("//div[@id='content']/a")).Click();
+            driver.FindElement(By.Id("name")).Click();
+            driver.FindElement(By.Id("name")).Clear();
+            driver.FindElement(By.Id("name")).SendKeys("test123");
+            driver.FindElement(By.Id("discount_amount")).Click();
+            driver.FindElement(By.Id("discount_amount")).Clear();
+            driver.FindElement(By.Id("discount_amount")).SendKeys("155");
+            driver.FindElement(By.Name("valid_date")).Click();
+            driver.FindElement(By.Name("valid_date")).Clear();
+            driver.FindElement(By.Name("valid_date")).SendKeys("12122020");
+            driver.FindElement(By.XPath("//form/div[5]/div")).Click();
+            driver.FindElement(By.Id("number_coupons")).Click();
+            driver.FindElement(By.Id("number_coupons")).Clear();
+            driver.FindElement(By.Id("number_coupons")).SendKeys("700");
+            driver.FindElement(By.Name("submit")).Click();
+            driver.FindElement(By.XPath("//a[contains(@href, '#')]")).Click();
+            driver.FindElement(By.LinkText("Logout")).Click();
         }
+
+        private void OpenHomePage()
+        {
+          
+            driver.Navigate().GoToUrl(baseURL);
+        }
+
+        private void LoginPage()
+        {
+            
+            driver.FindElement(By.XPath("(//input[@name='email'])[4]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='email'])[4]")).Clear();
+            driver.FindElement(By.XPath("(//input[@name='email'])[4]")).SendKeys("demo@open-eshop.com");
+            driver.FindElement(By.XPath("(//input[@name='password'])[2]")).Click();
+            driver.FindElement(By.XPath("(//input[@name='password'])[2]")).Clear();
+            driver.FindElement(By.XPath("(//input[@name='password'])[2]")).SendKeys("demo");
+            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Register'])[5]/following::button[1]")).Click();
+        }
+
         private bool IsElementPresent(By by)
         {
             try
@@ -77,13 +106,25 @@ namespace e_shop_web_tests
             {
                 return false;
             }
+
         }
 
         public static void addResultForTestCase(String case_id, int status, String error) {
 
+           APIClient client = new APIClient(m_url);
+            client.User = m_user;
+            client.Password = m_password;
+            JObject c = (JObject)client.SendGet("get_case/1182");
+            Console.WriteLine(c["title"]);
+
 
 
         }
+
+
+            
+
+       
 
         /*private bool IsAlertPresent()
         {

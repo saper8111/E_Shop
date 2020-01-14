@@ -12,7 +12,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace Gurock.TestRail
+namespace e_shop_web_tests
 {
 	[Serializable]
 	public class APIException: Exception
