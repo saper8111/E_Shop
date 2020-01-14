@@ -5,10 +5,10 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Firefox;
 
-namespace e_shop_web_tests
+namespace WebEshopTests
 {
     [TestFixture]
-    public class Login
+    public class CouponCreationTests
     {
 
         public static String TEST_RUN_ID = "281";
@@ -21,7 +21,7 @@ namespace e_shop_web_tests
         private StringBuilder verificationErrors;
         private string baseURL;
 
-        public static APIClient APIClient { get; private set; }
+        
 
         [SetUp]
         public void SetupTest()
@@ -46,9 +46,11 @@ namespace e_shop_web_tests
         }
 
         [Test]
-        public void TheUntitledTestCaseTest()
+        public void CouponCreationTest()
         {
+            // Open home page
             driver.Navigate().GoToUrl(baseURL);
+            // Login
             driver.FindElement(By.XPath("(//input[@name='email'])[4]")).Click();
             driver.FindElement(By.XPath("(//input[@name='email'])[4]")).Clear();
             driver.FindElement(By.XPath("(//input[@name='email'])[4]")).SendKeys("demo@open-eshop.com");
@@ -56,9 +58,12 @@ namespace e_shop_web_tests
             driver.FindElement(By.XPath("(//input[@name='password'])[2]")).Clear();
             driver.FindElement(By.XPath("(//input[@name='password'])[2]")).SendKeys("demo");
             driver.FindElement(By.XPath("(//button[@type='submit'])[5]")).Click();
+            // Go to coupon page
             driver.FindElement(By.XPath("//a/span[2]")).Click();
             driver.FindElement(By.XPath("//tr[4]/td/li/a/span")).Click();
+            // Init new coupon creation
             driver.FindElement(By.XPath("//div[@id='content']/a")).Click();
+            // Fill coupon form
             driver.FindElement(By.Id("name")).Click();
             driver.FindElement(By.Id("name")).Clear();
             driver.FindElement(By.Id("name")).SendKeys("test123");
@@ -72,28 +77,14 @@ namespace e_shop_web_tests
             driver.FindElement(By.Id("number_coupons")).Click();
             driver.FindElement(By.Id("number_coupons")).Clear();
             driver.FindElement(By.Id("number_coupons")).SendKeys("700");
+            // Submin coupon creation
             driver.FindElement(By.Name("submit")).Click();
+            // Return to coupons page
             driver.FindElement(By.XPath("//a[contains(@href, '#')]")).Click();
             driver.FindElement(By.LinkText("Logout")).Click();
         }
 
-        private void OpenHomePage()
-        {
-          
-            driver.Navigate().GoToUrl(baseURL);
-        }
-
-        private void LoginPage()
-        {
-            
-            driver.FindElement(By.XPath("(//input[@name='email'])[4]")).Click();
-            driver.FindElement(By.XPath("(//input[@name='email'])[4]")).Clear();
-            driver.FindElement(By.XPath("(//input[@name='email'])[4]")).SendKeys("demo@open-eshop.com");
-            driver.FindElement(By.XPath("(//input[@name='password'])[2]")).Click();
-            driver.FindElement(By.XPath("(//input[@name='password'])[2]")).Clear();
-            driver.FindElement(By.XPath("(//input[@name='password'])[2]")).SendKeys("demo");
-            driver.FindElement(By.XPath("(.//*[normalize-space(text()) and normalize-space(.)='Register'])[5]/following::button[1]")).Click();
-        }
+       
 
         private bool IsElementPresent(By by)
         {
@@ -109,7 +100,7 @@ namespace e_shop_web_tests
 
         }
 
-        public static void addResultForTestCase(String case_id, int status, String error) {
+        /*public static void addResultForTestCase(String case_id, int status, String error) {
 
            APIClient client = new APIClient(m_url);
             client.User = m_user;
@@ -120,6 +111,7 @@ namespace e_shop_web_tests
 
 
         }
+        */
 
 
             

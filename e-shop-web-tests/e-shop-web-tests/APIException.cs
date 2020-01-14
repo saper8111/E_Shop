@@ -12,7 +12,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace e_shop_web_tests
+namespace WebEshopTests
 {
 	[Serializable]
 	public class APIException: Exception

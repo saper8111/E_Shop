@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace e_shop_web_tests
+namespace WebEshopTests
 {
     class AccountData
     {

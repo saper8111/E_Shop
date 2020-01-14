@@ -18,7 +18,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace e_shop_web_tests
+namespace WebEshopTests
 {
     public class APIClient
     {
