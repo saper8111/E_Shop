@@ -52,25 +52,27 @@ namespace WebEshopTests
             Login(new AccountData("demo@open-eshop.com", "demo"));
             GoToCouponsPage();
             InitCouponCreation();
-            FillCouponForm(new CouponData("test123", "155", "12122020", "700"));
+            CouponData coupon = new CouponData("test123");
+            coupon.Discount_amount = "155";
+            coupon.Valid_date = "12122020";
+            coupon.Number_coupons = "700";
+            FillCouponForm(coupon);
             SubmitCouponCreation();
             Logout();
         }
 
         private void Logout()
         {
-            // Logout
             driver.FindElement(By.XPath("//a[contains(@href, '#')]")).Click();
             driver.FindElement(By.LinkText("Logout")).Click();
         }
 
         private void SubmitCouponCreation()
         {
-            // Submin coupon creation
             driver.FindElement(By.Name("submit")).Click();
         }
 
-        private void FillCouponForm(string name, string discount_amount, string valid_date, string number_coupons)
+        private void FillCouponForm(CouponData coupon)
         {
            
             driver.FindElement(By.Id("name")).Click();
@@ -85,7 +87,7 @@ namespace WebEshopTests
             driver.FindElement(By.XPath("//form/div[5]/div")).Click();
             driver.FindElement(By.Id("number_coupons")).Click();
             driver.FindElement(By.Id("number_coupons")).Clear();
-            driver.FindElement(By.Id("number_coupons")).SendKeys(number_coupons);
+            driver.FindElement(By.Id("number_coupons")).SendKeys(coupon.Number_coupons);
         }
 
         private void InitCouponCreation()

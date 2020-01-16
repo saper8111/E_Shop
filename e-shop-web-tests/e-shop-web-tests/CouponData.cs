@@ -9,14 +9,16 @@ namespace WebEshopTests
     class CouponData
     {
         private string name;
-        private string discount_amount;
-        private string valid_date;
+        private string discount_amount = "";
+        private string valid_date = "";
+        private string number_coupons = "";
 
-        public CouponData(string name, string discount_amount)
+        public CouponData(string name)
         {
             this.name = name;
-            this.discount_amount = discount_amount;
+           
         }
+
 
         public string Name
         {
@@ -52,6 +54,18 @@ namespace WebEshopTests
             set
             {
                 valid_date = value;
+            }
+        }
+
+        public string Number_coupons
+        {
+            get
+            {
+                return number_coupons;
+            }
+            set
+            {
+                number_coupons = value;
             }
         }
 
