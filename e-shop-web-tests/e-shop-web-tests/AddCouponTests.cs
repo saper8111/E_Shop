@@ -98,7 +98,6 @@ namespace WebEshopTests
 
         private void GoToCouponsPage()
         {
-            // Go to coupon page
             driver.FindElement(By.XPath("//a/span[2]")).Click();
             driver.FindElement(By.XPath("//tr[4]/td/li/a/span")).Click();
         }

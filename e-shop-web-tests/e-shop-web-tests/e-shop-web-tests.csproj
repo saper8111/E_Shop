@@ -78,6 +78,7 @@
     <Compile Include="APIClient.cs" />
     <Compile Include="APIException.cs" />
     <Compile Include="CouponData.cs" />
+    <Compile Include="CouponRemovalTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AddCouponTests.cs" />
   </ItemGroup>
