@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\User\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\User\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_e-shop-web-tests.-297352061.00" t="ExcludeRecursive" />
+    <e p="D:\work\software-testing\Project\Repos\saper8111\E_Shop\e-shop-web-tests" t="IncludeFlat">
+      <e p="e-shop-web-tests" t="IncludeRecursive">
+        <e p="AccountData.cs" t="Include" />
+        <e p="AddCouponTests.cs" t="Include" />
+        <e p="APIClient.cs" t="Include" />
+        <e p="APIException.cs" t="Include" />
+        <e p="app.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CouponData.cs" t="Include" />
+        <e p="CouponRemovalTest.cs" t="Include" />
+        <e p="e-shop-web-tests.csproj" t="IncludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+      </e>
+      <e p="e-shop-web-tests.sln" t="IncludeFlat" />
+      <e p="packages" t="ExcludeRecursive">
+        <e p="MSTest.TestAdapter.1.3.2\build\_common\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll" t="Include" />
+        <e p="MSTest.TestAdapter.1.3.2\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll" t="Include" />
+        <e p="MSTest.TestAdapter.1.3.2\build\_common\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll" t="Include" />
+      </e>
+    </e>
+  </component>
+</project>
